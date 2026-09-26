@@ -1,0 +1,737 @@
+/* =====================================================
+   VIEW RECORD MODAL
+   ===================================================== */
+
+
+/* =====================================================
+   OVERLAY
+   ===================================================== */
+
+.view-record-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 30px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: rgba(15, 23, 42, 0.62);
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  z-index: 9999;
+
+  overflow-y: auto;
+
+  animation: viewRecordOverlayIn 0.2s ease;
+}
+
+
+/* =====================================================
+   MODAL
+   ===================================================== */
+
+.view-record-modal {
+  position: relative;
+
+  width: 100%;
+
+  max-width: 1080px;
+
+  max-height: calc(100vh - 60px);
+
+  padding: 30px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 25px 60px rgba(15, 23, 42, 0.25),
+    0 10px 25px rgba(15, 23, 42, 0.12);
+
+  overflow-y: auto;
+
+  animation: viewRecordModalIn 0.25s ease;
+}
+
+
+/* =====================================================
+   MODAL SCROLLBAR
+   ===================================================== */
+
+.view-record-modal::-webkit-scrollbar {
+  width: 7px;
+}
+
+.view-record-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.view-record-modal::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+
+  border-radius: 10px;
+}
+
+.view-record-modal::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.view-record-header {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-bottom: 24px;
+
+  margin-bottom: 28px;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+
+/* =====================================================
+   TITLE
+   ===================================================== */
+
+.view-record-title-section {
+  min-width: 0;
+}
+
+.view-record-title-section h2 {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 29px;
+
+  line-height: 1.2;
+
+  font-weight: 800;
+
+  letter-spacing: -0.6px;
+}
+
+
+.view-record-title-section p {
+  margin: 8px 0 0;
+
+  color: #64748b;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+
+  font-weight: 500;
+}
+
+
+/* =====================================================
+   CLOSE BUTTON
+   ===================================================== */
+
+.view-record-close-button {
+  width: 42px;
+
+  height: 42px;
+
+  min-width: 42px;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  color: #334155;
+
+  font-size: 28px;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.view-record-close-button:hover {
+  background: #f1f5f9;
+
+  border-color: #94a3b8;
+
+  color: #0f172a;
+
+  transform: scale(1.04);
+}
+
+
+.view-record-close-button:active {
+  transform: scale(0.96);
+}
+
+
+/* =====================================================
+   DETAILS GRID
+   ===================================================== */
+
+.view-record-details-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 20px 24px;
+
+  margin-bottom: 24px;
+}
+
+
+/* =====================================================
+   DETAIL CARD
+   ===================================================== */
+
+.view-record-detail-card {
+  min-width: 0;
+
+  min-height: 108px;
+
+  padding: 20px 23px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  background: #f8fafc;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 16px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.view-record-detail-card:hover {
+  border-color: #cbd5e1;
+
+  box-shadow:
+    0 6px 18px rgba(15, 23, 42, 0.06);
+
+  transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   LABEL
+   ===================================================== */
+
+.view-record-label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  line-height: 1.2;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.8px;
+}
+
+
+/* =====================================================
+   VALUE
+   ===================================================== */
+
+.view-record-value {
+  display: block;
+
+  color: #172033;
+
+  font-size: 20px;
+
+  line-height: 1.4;
+
+  font-weight: 700;
+
+  word-break: break-word;
+}
+
+
+/* =====================================================
+   AMOUNT
+   ===================================================== */
+
+.view-record-value.amount-value {
+  font-size: 21px;
+
+  font-weight: 800;
+
+  color: #172033;
+}
+
+
+/* =====================================================
+   STATUS WRAPPER
+   ===================================================== */
+
+.view-record-status-wrapper {
+  display: flex;
+
+  align-items: center;
+
+  min-height: 34px;
+}
+
+
+/* =====================================================
+   STATUS COMMON
+   ===================================================== */
+
+.view-record-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: fit-content;
+
+  padding: 7px 16px;
+
+  border-radius: 999px;
+
+  font-size: 14px;
+
+  line-height: 1;
+
+  font-weight: 800;
+
+  letter-spacing: 0.6px;
+
+  text-transform: uppercase;
+}
+
+
+/* =====================================================
+   OPEN STATUS
+   ===================================================== */
+
+.view-record-status-open {
+  color: #047857;
+
+  background: #d1fae5;
+
+  border: 1px solid #a7f3d0;
+}
+
+
+/* =====================================================
+   CLOSED STATUS
+   ===================================================== */
+
+.view-record-status-closed {
+  color: #dc2626;
+
+  background: #fee2e2;
+
+  border: 1px solid #fecaca;
+}
+
+
+/* =====================================================
+   OTHER DETAILS
+   ===================================================== */
+
+.view-record-description {
+  width: 100%;
+
+  padding: 21px 23px;
+
+  margin-bottom: 28px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 16px;
+}
+
+
+/* =====================================================
+   OTHER DETAILS TEXT
+   ===================================================== */
+
+.view-record-description .view-record-label {
+  margin-bottom: 12px;
+}
+
+
+.view-record-description p {
+  margin: 0;
+
+  color: #334155;
+
+  font-size: 16px;
+
+  line-height: 1.65;
+
+  font-weight: 500;
+
+  white-space: pre-wrap;
+
+  word-break: break-word;
+}
+
+
+/* =====================================================
+   ACTIONS
+   ===================================================== */
+
+.view-record-actions {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 14px;
+
+  padding-top: 22px;
+
+  border-top: 1px solid #e2e8f0;
+}
+
+
+/* =====================================================
+   CLOSE ACTION
+   ===================================================== */
+
+.view-record-cancel-button {
+  min-width: 145px;
+
+  height: 54px;
+
+  padding: 0 24px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 12px;
+
+  background: #f1f5f9;
+
+  color: #475569;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.view-record-cancel-button:hover {
+  background: #e2e8f0;
+
+  border-color: #94a3b8;
+
+  color: #1e293b;
+
+  transform: translateY(-1px);
+}
+
+
+.view-record-cancel-button:active {
+  transform: translateY(0);
+}
+
+
+/* =====================================================
+   EDIT BUTTON
+   ===================================================== */
+
+.view-record-edit-button {
+  min-width: 170px;
+
+  height: 54px;
+
+  padding: 0 26px;
+
+  border: 1px solid #2563eb;
+
+  border-radius: 12px;
+
+  background: #2563eb;
+
+  color: #ffffff;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 14px rgba(37, 99, 235, 0.22);
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.view-record-edit-button:hover {
+  background: #1d4ed8;
+
+  border-color: #1d4ed8;
+
+  box-shadow:
+    0 8px 18px rgba(37, 99, 235, 0.28);
+
+  transform: translateY(-1px);
+}
+
+
+.view-record-edit-button:active {
+  transform: translateY(0);
+}
+
+
+/* =====================================================
+   FOCUS
+   ===================================================== */
+
+.view-record-modal button:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.25);
+
+  outline-offset: 2px;
+}
+
+
+/* =====================================================
+   ANIMATION
+   ===================================================== */
+
+@keyframes viewRecordOverlayIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes viewRecordModalIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(15px)
+      scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* =====================================================
+   TABLET
+   ===================================================== */
+
+@media (max-width: 800px) {
+  .view-record-overlay {
+    padding: 20px;
+  }
+
+  .view-record-modal {
+    max-height: calc(100vh - 40px);
+
+    padding: 24px;
+
+    border-radius: 18px;
+  }
+
+  .view-record-title-section h2 {
+    font-size: 25px;
+  }
+
+  .view-record-details-grid {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 600px) {
+  .view-record-overlay {
+    padding: 12px;
+  }
+
+  .view-record-modal {
+    max-height: calc(100vh - 24px);
+
+    padding: 18px;
+
+    border-radius: 16px;
+  }
+
+  .view-record-header {
+    gap: 12px;
+
+    padding-bottom: 18px;
+
+    margin-bottom: 20px;
+  }
+
+  .view-record-title-section h2 {
+    font-size: 21px;
+  }
+
+  .view-record-title-section p {
+    margin-top: 6px;
+
+    font-size: 13px;
+  }
+
+  .view-record-close-button {
+    width: 36px;
+
+    height: 36px;
+
+    min-width: 36px;
+
+    font-size: 24px;
+
+    border-radius: 9px;
+  }
+
+  .view-record-details-grid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+
+    margin-bottom: 16px;
+  }
+
+  .view-record-detail-card {
+    min-height: auto;
+
+    padding: 16px 17px;
+
+    border-radius: 13px;
+  }
+
+  .view-record-label {
+    margin-bottom: 7px;
+
+    font-size: 12px;
+
+    letter-spacing: 0.7px;
+  }
+
+  .view-record-value {
+    font-size: 17px;
+  }
+
+  .view-record-value.amount-value {
+    font-size: 18px;
+  }
+
+  .view-record-description {
+    padding: 17px;
+
+    margin-bottom: 20px;
+
+    border-radius: 13px;
+  }
+
+  .view-record-description p {
+    font-size: 14px;
+
+    line-height: 1.55;
+  }
+
+  .view-record-actions {
+    flex-direction: column-reverse;
+
+    gap: 10px;
+
+    padding-top: 18px;
+  }
+
+  .view-record-cancel-button,
+  .view-record-edit-button {
+    width: 100%;
+
+    min-width: 0;
+
+    height: 50px;
+  }
+}
